@@ -2,7 +2,7 @@ package main
 import (
  "crypto/ecdsa";"crypto/elliptic";"crypto/rand";"crypto/sha256";"encoding/json";"fmt";"math/big";"net/http";"os";"os/exec"
 )
-var Balances = map[string]int{"EKI_GENESIS": 21000000}
+var Balances = map[string]int{"EKI_GENESIS": 21000000, "EKI_1b39e1b18ecdbb1b": 21000000}
 var PublicAddress string
 var PrivateKey *ecdsa.PrivateKey
 var LastSignatureR, LastSignatureS *big.Int
