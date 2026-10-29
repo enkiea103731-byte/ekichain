@@ -1,0 +1,13 @@
+{
+  "chainId": 701,
+  "name": "EKIChain",
+  "symbol": "EKI",
+  "supply": "2100000000",
+  "pix": "32468719816",
+  "owner": "0x03664899007a53F086D545c34063E9CBfb29C9C2",
+  "alloc": {
+    "0x03664899007a53f086d545c34063e9cbfb29c9c2": {
+      "balance": "0x6c9144c1c690d4cb4000000"
+    }
+  }
+}
