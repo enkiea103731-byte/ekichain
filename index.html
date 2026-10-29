@@ -1,154 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EKI CHAIN - enki71 - Base EKI Nativa - 21M Supply</title>
-<link rel="icon" href="logo.png">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-:root{--gold:#FFD700;--bg:#050508;--card:#111116;--green:#00ff88}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace}
-body{background:var(--bg);color:#fff;overflow-x:hidden}
-.header{border-bottom:3px solid var(--gold);padding:25px;text-align:center;background:radial-gradient(ellipse at top,#1a1500 0%,#050508 70%)}
-.logo-wrap{width:150px;height:150px;margin:0 auto 12px;border-radius:50%;background:#000;border:4px solid var(--gold);box-shadow:0 0 50px #FFD700aa;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.logo-wrap img{width:100%;height:100%;object-fit:cover}
-h1{color:var(--gold);font-size:32px;letter-spacing:4px;text-shadow:0 0 20px var(--gold)}
-.sub{color:var(--green);font-size:11px;margin:12px 0;letter-spacing:1px}
-.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0}
-.badge{background:#000;border:1px solid var(--green);color:var(--green);padding:8px 14px;border-radius:24px;font-size:10px;cursor:pointer}
-.badge.gold{border-color:var(--gold);color:var(--gold);background:rgba(255,215,0,0.1)}
-.container{max-width:960px;margin:0 auto;padding:16px}
-.card{background:var(--card);border:1px solid #222;border-radius:14px;padding:20px;margin:16px 0;box-shadow:0 4px 20px rgba(0,0,0,0.5)}
-.card h2{color:var(--gold);font-size:14px;margin-bottom:14px;border-left:4px solid var(--gold);padding-left:10px;letter-spacing:1px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:750px){.grid2{grid-template-columns:1fr}}
-.wallet-box{background:#000;border:2px solid var(--gold);border-radius:14px;padding:18px;text-align:center;box-shadow:inset 0 0 20px rgba(255,215,0,0.1)}
-.wallet-addr{background:#111;padding:12px;border-radius:10px;font-size:11px;word-break:break-all;color:var(--gold);margin:12px 0;border:1px dashed var(--gold);letter-spacing:0.5px}
-.btn{width:100%;padding:15px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin:7px 0;font-size:13px;letter-spacing:1px;transition:0.2s}
-.btn:hover{transform:scale(1.02)}
-.btn-buy{background:var(--green);color:#000;box-shadow:0 0 20px rgba(0,255,136,0.3)}
-.btn-sell{background:#ff3b3b;color:#fff}
-.btn-connect{background:linear-gradient(90deg,var(--gold),#ffb700);color:#000;box-shadow:0 0 20px rgba(255,215,0,0.4)}
-.input{width:100%;padding:14px;background:#0a0a0f;border:1px solid #333;color:#fff;border-radius:10px;margin:8px 0;font-size:14px}
-.stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #222;font-size:12px}
-.stat b{color:var(--gold)}
-.qr{background:#fff;padding:12px;border-radius:12px;display:inline-block;margin:12px;box-shadow:0 0 20px rgba(255,255,255,0.2)}
-a{color:var(--gold);text-decoration:none}
-.history{font-size:11px;line-height:1.8;color:#ccc}
-.history b{color:var(--gold)}
-</style>
-</head>
-<body>
-<div class="header">
-<div class="logo-wrap"><img src="logo.png" onerror="this.src='https://raw.githubusercontent.com/enkiea103731-byte/ekichain/main/logo.png'" alt="EKI enki71"></div>
-<h1>EKI CHAIN</h1>
-<div class="sub">TOKEN 1021 - EKI - Base EKI Nativa | 21M FIXO | EKI_3774968e0ae21a32 | 1 EKI = R$0,01</div>
-<div class="badges">
-<span class="badge">🔥 ANDROID NATIVO - TERMUX | API :8080 | P2P :6001 | ECDSA: true</span>
-<span class="badge gold" onclick="location.href='explorer.html'">🔍 Explorer Real</span>
-<span class="badge gold" onclick="location.href='EKI_Whitepaper_v1.pdf'">📄 Whitepaper</span>
-<span class="badge gold" onclick="location.href='CONTRACT.md'">📜 Contrato L1</span>
-<span class="badge gold" onclick="location.href='LICENSE'">⚖️ Licença MIT</span>
-</div>
-</div>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EKI CHAIN - 21M - Base EKI</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>:root{--gold:#FFD700;--bg:#050508;--card:#111116;--green:#00ff88}*{margin:0;padding:0;box-sizing:border-box;font-family:monospace}body{background:var(--bg);color:#fff}.header{border-bottom:2px solid var(--gold);padding:20px;text-align:center;background:radial-gradient(ellipse at top,#1a1500 0%,#050508 70%)}.logo-wrap{width:140px;height:140px;margin:0 auto 10px;border-radius:50%;background:#000;border:3px solid var(--gold);box-shadow:0 0 40px #FFD700aa;overflow:hidden}.logo-wrap img{width:100%;height:100%;object-fit:cover}h1{color:var(--gold);font-size:28px}.sub{color:var(--green);font-size:11px;margin:10px 0}.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:15px 0}.badge{background:#000;border:1px solid var(--green);color:var(--green);padding:6px 12px;border-radius:20px;font-size:10px;cursor:pointer}.badge.gold{border-color:var(--gold);color:var(--gold)}.container{max-width:900px;margin:0 auto;padding:15px}.card{background:var(--card);border:1px solid #222;border-radius:12px;padding:18px;margin:14px 0}.card h2{color:var(--gold);font-size:13px;margin-bottom:12px;border-left:3px solid var(--gold);padding-left:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid2{grid-template-columns:1fr}}.wallet-box{background:#000;border:2px solid var(--gold);border-radius:12px;padding:16px;text-align:center}.wallet-addr{background:#111;padding:10px;border-radius:8px;font-size:11px;word-break:break-all;color:var(--gold);margin:10px 0;border:1px dashed var(--gold)}.btn{width:100%;padding:14px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:6px 0;font-size:13px}.btn-buy{background:var(--green);color:#000}.btn-sell{background:#ff4444;color:#fff}.btn-connect{background:var(--gold);color:#000}.input{width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin:6px 0}.stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222;font-size:12px}.stat b{color:var(--gold)}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:999;align-items:center;justify-content:center}.modal-box{background:#111116;border:2px solid var(--gold);border-radius:14px;padding:20px;max-width:400px;width:90%;text-align:center}.qr{background:#fff;padding:10px;border-radius:10px;display:inline-block;margin:10px}</style></head><body>
+<div class="header"><div class="logo-wrap"><img src="logo.png" onerror="this.src='https://raw.githubusercontent.com/enkiea103731-byte/ekichain/main/logo.png'"></div><h1>EKI CHAIN</h1><div class="sub">EKI_3774968e0ae21a32 | 21M FIXO | 1 EKI = R$0,01 | ECDSA Validada: true</div><div class="badges"><span class="badge">API :8080 | P2P :6001</span><span class="badge gold" onclick="location.href='explorer.html'">Explorer</span><span class="badge gold" onclick="location.href='whitepaper.html'">Whitepaper ✅</span><span class="badge gold" onclick="location.href='EKI_Whitepaper_v1.html'">PDF Whitepaper</span></div></div>
+<div class="container"><div class="card"><h2>💼 CARTEIRA REAL - COMPRA / VENDA - CLIENTE</h2><div class="grid2"><div class="wallet-box"><div style="font-size:11px;color:#888">CARTEIRA GENESIS CONECTADA</div><div class="wallet-addr">EKI_3774968e0ae21a32</div><div class="stat"><span>Saldo</span><b>21.000.000 EKI</b></div><div class="stat"><span>Preço</span><b>R$0,01</b></div><button class="btn btn-connect" onclick="connectWallet()">🔗 CONECTAR METAMASK / TRUST</button><div id="mm" style="font-size:10px;color:#00ff88"></div></div><div class="wallet-box"><input class="input" id="buyAmount" type="number" placeholder="Qtd EKI ex: 1000"><div>Total: <b id="totalBRL" style="color:var(--gold)">R$ 0,00</b></div><button class="btn btn-buy" onclick="openBuy()">🟢 COMPRAR EKI</button><button class="btn btn-sell" onclick="openSell()">🔴 VENDER EKI</button><div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=EKI_3774968e0ae21a32"></div><br><span style="font-size:10px;color:#aaa">Binance Bridge BEP20 0x8f3D...EKIa71 em breve</span></div></div></div>
+<div class="grid2"><div class="card"><h2>📈 Gráfico Real</h2><canvas id="priceChart" height="180"></canvas></div><div class="card"><h2>💰 Distribuição 21M</h2><canvas id="tokenChart" height="180"></canvas></div></div></div>
 
-<div class="container">
+<div class="modal" id="buyModal"><div class="modal-box"><h2 style="color:#00ff88">🟢 COMPRA EKI REAL CRIADA</h2><p style="font-size:12px;margin:10px 0">Qtd: <b id="mBuyQ">1000</b> EKI<br>Total: <b id="mBuyT" style="color:var(--gold)">R$ 10,00</b></p><div style="text-align:left;background:#000;padding:10px;border-radius:8px;font-size:11px"><b>1. PIX COPIA E COLA:</b><br><span style="color:var(--gold);word-break:break-all" id="pixKey">EKI_3774968e0ae21a32</span><br><button onclick="navigator.clipboard.writeText('EKI_3774968e0ae21a32');alert('PIX copiado!')" style="background:var(--gold);border:none;padding:5px 10px;border-radius:5px;margin-top:5px;cursor:pointer">COPIAR PIX</button><br><br><b>2. Ou BNB (BSC):</b><br>0x8f3D4b8E...EKIa71<br><br><b>Após pagar:</b> EKI cai em EKI_3774968e0ae21a32<br>ID: #EKI<span id="mId"></span></div><button class="btn btn-connect" style="margin-top:12px" onclick="window.open('https://wa.me/5517999999999?text=Comprei '+document.getElementById('mBuyQ').innerText+' EKI - '+document.getElementById('mBuyT').innerText)">📲 ENVIAR COMPROVANTE WHATSAPP</button><button class="btn" style="background:#333;color:#fff" onclick="document.getElementById('buyModal').style.display='none'">FECHAR</button></div></div>
 
-<div class="card">
-<h2>💼 CARTEIRA CRIPTOGRÁFICA REAL - COMPRA / VENDA - CLIENTE</h2>
-<div class="grid2">
-<div class="wallet-box">
-<div style="font-size:11px;color:#888;letter-spacing:1px">CARTEIRA GENESIS - CONECTADA - MAINNET REAL</div>
-<div class="wallet-addr" id="addr">EKI_3774968e0ae21a32</div>
-<div class="stat"><span>Saldo Genesis</span><b>21.000.000 EKI</b></div>
-<div class="stat"><span>Preço Genesis</span><b>1 EKI = R$0,01</b></div>
-<div class="stat"><span>Market Cap</span><b>R$210.000,00</b></div>
-<div class="stat"><span>Hash SHA256</span><b>70cd416462f3aef6...</b></div>
-<div class="stat"><span>ECDSA R/S</span><b>f22c79 / d80b3c Validada: true</b></div>
-<button class="btn btn-connect" onclick="connectWallet()">🔗 CONECTAR METAMASK / TRUST WALLET</button>
-<div id="mmAddr" style="font-size:10px;color:var(--green);margin-top:10px;word-break:break-all"></div>
-</div>
-<div class="wallet-box">
-<div style="font-size:13px;color:var(--gold);font-weight:bold;margin-bottom:12px;letter-spacing:1px">💰 COMPRAR / VENDER EKI - PIX / BNB</div>
-<input class="input" id="buyAmount" type="number" placeholder="Quantidade EKI - ex: 5000">
-<div style="font-size:11px;color:#aaa;margin:6px 0">Total a pagar: <b id="totalBRL" style="color:var(--gold);font-size:14px">R$ 0,00</b> + taxa rede</div>
-<button class="btn btn-buy" onclick="buyEKI()">🟢 COMPRAR EKI - PIX / BNB</button>
-<button class="btn btn-sell" onclick="sellEKI()">🔴 VENDER EKI - RECEBER PIX</button>
-<div style="margin-top:14px;font-size:10px;line-height:1.6">
-<b style="color:var(--gold)">Conexão Binance / PancakeSwap:</b><br>
-Bridge BEP20 Wrapper: <span style="color:#fff">0x8f3D4b8E...EKIa71 (em dev)</span><br>
-Rede: BSC Mainnet - Adicione na MetaMask<br>
-<div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=EKI_3774968e0ae21a32" alt="QR PIX EKI"></div><br>
-<span style="color:#888">Escaneie para pagar PIX / Enviar BNB<br>Destino: EKI_3774968e0ae21a32</span>
-</div>
-</div>
-</div>
-</div>
-
-<div class="grid2">
-<div class="card">
-<h2>📈 Gráfico Real - Preço Genesis ao Listagem</h2>
-<canvas id="priceChart" height="200"></canvas>
-<div class="stat"><span>Preço Atual Genesis</span><b>1 EKI = R$0,01</b></div>
-<div class="stat"><span>Supply Fixo</span><b>21.000.000 EKI</b></div>
-</div>
-<div class="card">
-<h2>💎 Distribuição - 21M Supply</h2>
-<canvas id="tokenChart" height="200"></canvas>
-<div style="font-size:10px;margin-top:10px;color:#aaa;line-height:1.5">
-82% Liquidez 18.2M | 10% Dev Team 2.1M | 5% Reserva 1.05M | 3% Marketing 630k<br>
-Contrato: L1 Nativa Base EKI - Não é ERC20 - Ver CONTRACT.md
-</div>
-</div>
-</div>
-
-<div class="card">
-<h2>📜 História Completa - De Enki a EKI</h2>
-<div class="history">
-<b>ENKI - Deus Sumério:</b> Deus da água doce, sabedoria, criação e magia. Guardião dos ME (segredos divinos da civilização). Representado com asas, barba longa, dois peixes do rio Tigre e Eufrates e águas fluindo dos ombros. Na mitologia, Enki criou a humanidade e trouxe conhecimento e artes.<br><br>
-<b>enki71 - Nome Original da Moeda:</b> Homenagem a Enki + 71 = Código da criação BR (7=perfeição, 1=início). Criada em Ibirá-SP, 100% no Android via Termux, linguagem Go, sem AWS, sem servidor. Primeira blockchain do mundo criada em celular. Genesis Block mensagem: "EKI Genesis Block - O início do ecossistema Android".<br><br>
-<b>EKI - Evolução Final:</b> De Enki -> enki71 -> EKI. 3 letras icônicas como BTC, ETH, SOL, BNB. Base EKI Nativa. Carteira Genesis: EKI_3774968e0ae21a32 com 21M. Hash SHA256: 70cd416462f3aef6acfd9e47d9317cc6. ECDSA: R f22c7960858b0d81704c... S d80b3c38ca595a396712... Validada: true. Chave privada segura 0758a4e...dd... Ver HISTORY.md<br><br>
-<b>Ecossistema:</b> API :8080 | P2P :6001 | main.go + p2p.go + wallet.go + token.go + buy.go | Totalmente operacional no Termux.
-</div>
-</div>
-
-<div class="card">
-<h2>🔗 Mainnet Real + Conexões Externas</h2>
-<div class="grid2">
-<div>
-<div class="stat"><span>API LIVE</span><b><a href="/api/balance" target="_blank">/api/balance ✅</a></b></div>
-<div class="stat"><span>P2P LIVE</span><b>TCP :6001 Real ✅</b></div>
-<div class="stat"><span>ECDSA</span><b>Validada true R:f22c79 S:d80b3c ✅</b></div>
-<div class="stat"><span>Contract Type</span><b>L1 Nativa Base EKI</b></div>
-<div class="stat"><span>Licença</span><b><a href="LICENSE">MIT 2026</a></b></div>
-</div>
-<div>
-<div class="stat"><span>MetaMask / Trust</span><b>Conectar Botão Amarelo ✅</b></div>
-<div class="stat"><span>Binance Bridge</span><b>BEP20 Wrapper dev - 0x8f3D...</b></div>
-<div class="stat"><span>PancakeSwap</span><b>Ativo após wrapper</b></div>
-<div class="stat"><span>Add Rede BSC</span><b><button onclick="addToMetamask()" style="background:var(--gold);border:none;padding:5px 10px;border-radius:6px;font-size:10px;cursor:pointer;font-weight:bold">+ ADD BSC NA METAMASK</button></b></div>
-<div class="stat"><span>Explorer</span><b><a href="explorer.html">explorer.html LIVE</a></b></div>
-</div>
-</div>
-</div>
-
-<div class="card" style="text-align:center;font-size:10px;color:#666;letter-spacing:1px">
-🌐 Links Oficiais: ekichain.onrender.com | Explorer | GitHub: github.com/enkiea103731-byte/ekichain | Logo: /logo.png | Whitepaper | CONTRACT.md | HISTORY.md | MAINNET_PROOF.md<br>
-© 2026 EKI Chain - enki71 - Feito 100% no Android - Ibirá SP - Primeira Blockchain Nativa Android do Mundo - 21M Supply - Base EKI
-</div>
-
-</div>
+<div class="modal" id="sellModal"><div class="modal-box"><h2 style="color:#ff4444">🔴 VENDA EKI</h2><p style="font-size:12px;margin:10px 0">Vender: <b id="mSellQ">1000</b> EKI<br>Recebe PIX: <b id="mSellT" style="color:var(--gold)">R$ 9,50</b> (-5%)</p><div style="text-align:left;background:#000;padding:10px;border-radius:8px;font-size:11px">Envie <b id="mSellQ2">1000</b> EKI para:<br><span style="color:var(--gold)">EKI_3774968e0ae21a32</span><br><button onclick="navigator.clipboard.writeText('EKI_3774968e0ae21a32');alert('Endereço copiado!')" style="background:var(--gold);border:none;padding:5px 10px;border-radius:5px;margin-top:5px;cursor:pointer">COPIAR ENDEREÇO</button><br><br>Após 1 bloco, PIX cai em 5min.</div><button class="btn" style="background:#333;color:#fff;margin-top:12px" onclick="document.getElementById('sellModal').style.display='none'">FECHAR</button></div></div>
 
 <script>
-const c1=document.getElementById('priceChart').getContext('2d');new Chart(c1,{type:'line',data:{labels:['Genesis','Bloco 1','Bloco 2','Hoje','Fase 2','Listagem Binance'],datasets:[{label:'Preço R$',data:[0.01,0.01,0.012,0.015,0.05,0.10],borderColor:'#FFD700',backgroundColor:'rgba(255,215,0,0.1)',fill:true,tension:0.4,pointRadius:4}]},options:{plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#888'}},x:{ticks:{color:'#888'}}}}});
-const c2=document.getElementById('tokenChart').getContext('2d');new Chart(c2,{type:'doughnut',data:{labels:['Liquidez 82%','Dev 10%','Reserva 5%','Marketing 3%'],datasets:[{data:[82,10,5,3],backgroundColor:['#00ff88','#FFD700','#ff4444','#4488ff'],borderWidth:0}]},options:{plugins:{legend:{labels:{color:'#ccc',font:{size:10}}}}}});
+const ctx1=document.getElementById('priceChart').getContext('2d');new Chart(ctx1,{type:'line',data:{labels:['Genesis','Bloco1','Hoje','Fase2','Binance'],datasets:[{label:'R$',data:[0.01,0.01,0.01,0.05,0.25],borderColor:'#FFD700',backgroundColor:'rgba(255,215,0,0.1)',tension:0.4}]},options:{plugins:{legend:{display:false}}}});
+const ctx2=document.getElementById('tokenChart').getContext('2d');new Chart(ctx2,{type:'doughnut',data:{labels:['Liquidez 82%','Dev 10%','Reserva 5%','Mkt 3%'],datasets:[{data:[82,10,5,3],backgroundColor:['#FFD700','#00ff88','#444','#888']}]}});
 document.getElementById('buyAmount').addEventListener('input',function(){let v=parseFloat(this.value)||0;document.getElementById('totalBRL').innerText='R$ '+(v*0.01).toFixed(2)});
-async function connectWallet(){if(window.ethereum){try{const a=await window.ethereum.request({method:'eth_requestAccounts'});document.getElementById('mmAddr').innerText='✅ Conectado MetaMask: '+a[0];alert('Carteira Conectada com Sucesso!\n\n'+a[0]+'\n\nAgora você pode comprar EKI. Envie BNB e receba EKI em: EKI_3774968e0ae21a32');}catch(e){alert('Erro: '+e.message)}}else{alert('Instale MetaMask ou Trust Wallet!\n\nDepois clique Conectar novamente.\n\nEndereço EKI Nativo: EKI_3774968e0ae21a32\nPreço: 1 EKI = R$0,01');}}
-function buyEKI(){let q=document.getElementById('buyAmount').value||1000;let t=(q*0.01).toFixed(2);alert('🟢 COMPRA EKI REAL CRIADA\n\nQuantidade: '+q+' EKI\nTotal: R$ '+t+'\n\n1. PIX: CPF enki71 - Chave EKI_3774968e0ae21a32\n2. Ou envie BNB (BSC) para:\n0x8f3D4b8E...EKIa71 (Bridge)\n\nApós pagamento, EKI cai automaticamente em:\nEKI_3774968e0ae21a32\n\nID Pedido: #EKI'+Date.now()+'\nSuporte: Ibirá-SP - enki71');}
-function sellEKI(){let q=document.getElementById('buyAmount').value||1000;let t=(q*0.01*0.95).toFixed(2);alert('🔴 VENDA EKI - SOLICITAÇÃO\n\nVocê quer vender: '+q+' EKI\nVai receber PIX: R$ '+t+' (-5% taxa rede)\n\nEnvie '+q+' EKI para carteira Genesis:\nEKI_3774968e0ae21a32\n\nApós confirmação de 1 bloco, PIX cai em 5min.\n\nID Venda: #SELL'+Date.now());}
-async function addToMetamask(){if(!window.ethereum){alert('Instale MetaMask primeiro!\n\nplay.google.com/store/apps/details?id=io.metamask');return}try{await window.ethereum.request({method:'wallet_addEthereumChain',params:[{chainId:'0x38',chainName:'BNB Smart Chain',nativeCurrency:{name:'BNB',symbol:'BNB',decimals:18},rpcUrls:['https://bsc-dataseed.binance.org/'],blockExplorerUrls:['https://bscscan.com/']}]});alert('✅ Rede BSC adicionada na MetaMask!\n\nAgora adicione o token EKI BEP20 Wrapper:\n0x8f3D4b8E...EKIa71 (em breve)\n\nSua carteira EKI nativa continua:\nEKI_3774968e0ae21a32');}catch(e){alert(e.message)}}
-fetch('/api/balance').then(r=>r.json()).then(d=>{console.log('EKI API:',d)}).catch(()=>{});
-</script>
-</body>
-</html>
+function openBuy(){let q=document.getElementById('buyAmount').value||1000;document.getElementById('mBuyQ').innerText=q;document.getElementById('mBuyT').innerText='R$ '+(q*0.01).toFixed(2);document.getElementById('mId').innerText=Date.now();document.getElementById('buyModal').style.display='flex';}
+function openSell(){let q=document.getElementById('buyAmount').value||1000;document.getElementById('mSellQ').innerText=q;document.getElementById('mSellQ2').innerText=q;document.getElementById('mSellT').innerText='R$ '+(q*0.01*0.95).toFixed(2);document.getElementById('sellModal').style.display='flex';}
+async function connectWallet(){if(window.ethereum){try{const a=await window.ethereum.request({method:'eth_requestAccounts'});document.getElementById('mm').innerText='Conectado: '+a[0].slice(0,12)+'...';}catch(e){alert(e.message)}}else{alert('Instale MetaMask! EKI: EKI_3774968e0ae21a32');}}
+</script></body></html>
