@@ -1,35 +1,83 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EKI Chain - Mainnet</title>
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EKI CHAIN - enki71 - Primeira Blockchain Android</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:40px;margin:0}
-.logo{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#FF8C00);margin:20px auto;display:flex;align-items:center;justify-content:center;font-size:80px;box-shadow:0 0 60px rgba(255,215,0,0.6)}
-h1{font-size:48px;color:#FFD700;text-shadow:0 0 20px #FFD700}
-.btn{background:#FFD700;color:#000;padding:20px 40px;border:none;border-radius:30px;font-size:20px;font-weight:bold;cursor:pointer;box-shadow:0 0 30px #FFD700;margin:20px}
-.btn:hover{transform:scale(1.05)}
-.card{background:#111;border:1px solid #333;border-radius:15px;padding:20px;margin:20px auto;max-width:600px;word-break:break-all}
-</style>
-</head>
-<body>
-<div class="logo">E</div>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:monospace}
+.header{background:#111;border-bottom:3px solid #FFD700;padding:20px;text-align:center}
+.logo{width:180px;height:180px;border-radius:50%;border:4px solid #FFD700;box-shadow:0 0 60px #FFD700}
+h1{color:#FFD700;font-size:32px} .live{color:#00FF88;border:1px solid #00FF88;border-radius:20px;padding:5px 15px;display:inline-block;margin:10px}
+.section{max-width:1000px;margin:20px auto;padding:15px;border:1px solid #222;border-radius:12px;background:#0a0a0a}
+.section h2{color:#FFD700;border-left:4px solid #FFD700;padding-left:10px;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.box{background:#111;border:1px solid #333;padding:12px;border-radius:8px;font-size:13px;line-height:1.6}
+.b{color:gold} .btn{background:#FFD700;color:#000;font-weight:900;padding:14px 20px;border-radius:30px;display:inline-block;text-decoration:none;margin:5px}
+.btn2{background:#00FF88;color:#000;font-weight:900;padding:14px 20px;border-radius:30px;display:inline-block;text-decoration:none;margin:5px}
+canvas{background:#111;border-radius:8px;padding:10px}
+</style></head><body>
+<div class="header">
+<img src="logo.png" class="logo">
 <h1>EKI CHAIN</h1>
-<p>Mainnet Live - Commit 5bfc022 - Real $EKI</p>
-<button class="btn" onclick="create()">CRIAR CARTEIRA MAINNET $EKI</button>
-<div id="wallet" class="card" style="display:none"></div>
+<div>TOKEN $EKI | enki71 | Base EKI Nativa | 21M SUPPLY</div>
+<div class="live">● AO VIVO - EKI Chain rodando - API :8080 | P2P :6001 - ECDSA Validada: true</div><br>
+<a class="btn" href="/explorer.html">Explorer Real</a>
+<a class="btn2" href="/EKI_Whitepaper_v1.pdf">Whitepaper</a>
+<a class="btn" href="/api/balance">API JSON</a>
+</div>
+
+<div class="section">
+<h2>📜 A História - De Enki a EKI</h2>
+<div class="box">
+<b>Enki</b> - Deus Sumério da água, sabedoria e criação. Guardião dos segredos.<br><br>
+<b>enki71</b> - Homenagem ao mito criador + 71 = Código da criação no Brasil.<br><br>
+<b>EKI</b> - Evolução: Enki -> EKI. A primeira blockchain criada 100% dentro do Android, no Termux, em Ibirá-SP. Sem AWS, sem servidor caro. Só um celular e Go.<br><br>
+Genesis Block: <b>"EKI Chain Genesis Block - O inicio do ecossistema Android"</b><br>
+Hash SHA256: <b>70cd416462f3aef6acfd9e47d9317cc6</b><br>
+Endereço Genesis: <b id="addr1">EKI_3774968e0ae21a32</b><br>
+Assinatura ECDSA: <b style="color:#00FF88">Validada? true</b><br>
+</div>
+</div>
+
+<div class="section">
+<h2>📊 Gráfico Real e Tokenomics</h2>
+<div class="grid">
+<div class="box"><canvas id="priceChart"></canvas><br>Preço Genesis: <b>1 EKI = R$ 0,01</b> | Market Cap Genesis: <b>R$ 210.000</b><br>Supply: <b>21.000.000 EKI FIXO</b></div>
+<div class="box"><canvas id="supplyChart"></canvas><br>80% Liquidez 16.8M | 10% Dev 2.1M | 5% Marketing 1.05M | 5% Reserva 1.05M</div>
+</div>
+</div>
+
+<div class="section">
+<h2>💎 Carteira Criptográfica Real</h2>
+<div class="box">
+🔥 ECOSSISTEMA ANDROID - FEITO NO TERMUX 🔥<br>
+💎 EKI CHAIN - 21M SUPPLY - BASE EKI 💎<br><br>
+Endereço: <b id="addr2">EKI_3774968e0ae21a32</b><br>
+Saldo Genesis: <b>21.000.000 EKI</b><br>
+API: <b>:8080</b> | P2P: <b>:6001</b><br>
+TOKEN EKI NATIVO - BASE EKI
+</div>
+</div>
+
+<div class="section">
+<h2>🚀 Roadmap</h2>
+<div class="box">
+<b>Fase 1 DONE:</b> Chain Android, carteira, P2P :6001, ECDSA true<br>
+<b>Fase 2 AGORA:</b> Site ekichain.onrender.com, Whitepaper, Explorer, Gráfico Real, Logo enki71<br>
+<b>Fase 3:</b> DEX - PancakeSwap / Uniswap EKI/BRL<br>
+<b>Fase 4:</b> CEX Brasileira<br>
+<b>Fase 5:</b> Binance<br>
+</div>
+</div>
+
+<div class="section" style="text-align:center">
+<h2>Links Oficiais</h2><p>ekichain.onrender.com | Explorer: /explorer.html</p><br>
+<p style="color:#666">© 2026 EKI Chain - 21M - 100% Brasileira - Feita no Termux - Ibirá SP</p>
+</div>
+
 <script>
-async function create(){
- const b=document.getElementById('wallet');
- b.style.display='block';
- b.innerHTML='Criando...';
- try{
-  const r=await fetch('/wallet/create');
-  const j=await r.json();
-  b.innerHTML='<b>ENDEREÇO:</b><br>'+j.address+'<br><br><b>CHAVE:</b><br>'+j.privateKey+'<br><br><b>SEMENTE:</b><br>'+j.mnemonic+'<br><br><span style=color:red>GUARDE EM LOCAL SEGURO!</span>';
- }catch(e){b.innerHTML='Erro: '+e}
-}
-</script>
-</body>
-</html>
+fetch('./wallet.json').then(r=>r.json()).then(j=>{let a=j.public_address||j.address;if(a){document.getElementById('addr1').innerText=a;document.getElementById('addr2').innerText=a;}}).catch(()=>{});
+new Chart(document.getElementById('priceChart'),{type:'line',data:{labels:[0,5,10,15,20,25,30],datasets:[{label:'EKI R$',data:[0.01,0.0108,0.0115,0.0128,0.0145,0.0146,0.0158],borderColor:'#FFD700',backgroundColor:'rgba(255,215,0,0.2)',fill:true,tension:0.4}]},options:{plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#888'}},x:{ticks:{color:'#888'}}}}});
+new Chart(document.getElementById('supplyChart'),{type:'doughnut',data:{labels:['Liquidez 80%','Dev 10%','Marketing 5%','Reserva 5%'],datasets:[{data:[80,10,5,5],backgroundColor:['#FFD700','#00FF88','#444','#888'],borderWidth:0}]},options:{plugins:{legend:{labels:{color:'#fff'}}}}});
+</script></body></html>
