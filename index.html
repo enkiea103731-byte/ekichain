@@ -1,17 +1,33 @@
-<!DOCTYPE html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EKI CHAIN</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>body{background:#0a0a0a;color:#fff;font-family:Arial;padding:10px}.card{background:#1a1a1a;border:1px solid #00ff88;border-radius:12px;padding:16px;margin:10px 0}.btn{background:#00ff88;color:#000;padding:12px;border:none;border-radius:8px;font-weight:bold;width:100%;margin:5px 0}input{width:100%;padding:10px;border-radius:6px;border:1px solid #333;background:#000;color:#fff;margin:5px 0}.addr{word-break:break-all;background:#000;padding:8px;font-size:11px}</style></head><body>
-<h2 style="color:#00ff88">EKI CHAIN - CPF 32468719816</h2>
-<div class="card"><input id="addr" placeholder="Endereco EKI"><button class="btn" onclick="createWallet()">Criar Carteira</button><button class="btn" style="background:#fff" onclick="checkBal()">Ver Saldo</button><div id="bal" style="color:#00ff88;font-weight:bold"></div></div>
-<div class="card"><input id="buyAmount" type="number" value="1000"><button class="btn" onclick="openBuy()">GERAR PIX REAL 32468719816</button></div>
-<div class="card"><input id="sellAmount" type="number" value="500"><button class="btn" style="background:#ff4444;color:#fff" onclick="openSell()">VENDER</button></div>
-<div class="card"><canvas id="chart"></canvas></div>
-<div id="buyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;z-index:99"><div class="card" style="max-width:400px;width:90%"><h3>PIX GERADO</h3><p><span id="mBuyQ"></span> EKI = R$ <span id="mBuyT"></span></p><img id="mQr" style="width:100%"><div class="addr" id="pixKey"></div><button class="btn" onclick="copyPix()">COPIAR PIX</button><button class="btn" onclick="confirmBuy()">JA PAGUEI</button><button class="btn" style="background:#333;color:#fff" onclick="document.getElementById('buyModal').style.display='none'">FECHAR</button></div></div>
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EKI CHAIN</title></head><body style="background:#000;color:#0f0;font-family:monospace;padding:20px">
+<h2>EKI CHAIN - PIX 32468719816</h2>
+<input id="carteira" placeholder="EKI_..." style="width:100%;padding:10px"><br><br>
+<button onclick="criarCarteira()" style="width:100%;padding:15px;background:green;color:black;font-weight:bold">Criar Carteira</button><br><br>
+<button onclick="verSaldo()" style="width:100%;padding:15px;background:gray">Ver Saldo</button><br><br>
+<input id="qtd" value="500" style="width:45%;padding:10px">
+<button onclick="venderEKI()" style="width:50%;padding:10px;background:red;color:white">VENDER</button>
 <script>
-let userAddr=localStorage.getItem('eki_addr')||'';document.getElementById('addr').value=userAddr;let currentBuy={qtd:0};
-function createWallet(){let a='EKI_'+Date.now()+'_'+Math.random().toString(36).substr(2,5).toUpperCase();document.getElementById('addr').value=a;localStorage.setItem('eki_addr',a);userAddr=a;alert('Carteira '+a);checkBal();}
-async function checkBal(){let a=document.getElementById('addr').value;if(!a)return alert('Endereco');userAddr=a;localStorage.setItem('eki_addr',a);let r=await fetch('/api/balance?address='+a);let d=await r.json();document.getElementById('bal').innerText='SALDO '+(d.balance||0)+' EKI';}
-async function openBuy(){let q=document.getElementById('buyAmount').value||1000;if(!userAddr){userAddr=document.getElementById('addr').value;if(!userAddr)return alert('Cria carteira');}let res=await fetch('/api/pix?qtd='+q);let data=await res.json();currentBuy={qtd:q};document.getElementById('mBuyQ').innerText=q;document.getElementById('mBuyT').innerText=data.valor;document.getElementById('pixKey').innerText=data.payload;document.getElementById('mQr').src=data.qr_url;document.getElementById('buyModal').style.display='flex';}
-function copyPix(){navigator.clipboard.writeText(document.getElementById('pixKey').innerText);alert('PIX copiado');}
-async function confirmBuy(){let a=userAddr||document.getElementById('addr').value;let r=await fetch('/api/buy',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({address:a,qtd:parseFloat(currentBuy.qtd)})});let d=await r.json();alert(d.status+' '+d.qtd+' EKI');document.getElementById('buyModal').style.display='none';checkBal();}
-async function openSell(){let q=document.getElementById('sellAmount').value||500;let a=userAddr||document.getElementById('addr').value;if(!a)return alert('Sem carteira');let r=await fetch('/api/sell',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({address:a,qtd:parseFloat(q)})});let d=await r.json();alert(JSON.stringify(d));checkBal();}
-new Chart(document.getElementById('chart'),{type:'line',data:{labels:['S','T','Q','Q','S','S'],datasets:[{label:'EKI R$',data:[0.01,0.012,0.011,0.013,0.015,0.018],borderColor:'#00ff88'}]}});
-</script></body></html>
+function criarCarteira(){
+  const id="EKI_"+Date.now()+"_"+Math.random().toString(36).substr(2,5).toUpperCase();
+  localStorage.setItem("eki_id",id);
+  if(!localStorage.getItem("eki_saldo")) localStorage.setItem("eki_saldo","10000");
+  document.getElementById("carteira").value=id;
+  alert("Criada: "+id+"\nSaldo: 10000 EKI liberado");
+}
+function verSaldo(){
+  const id=localStorage.getItem("eki_id")||document.getElementById("carteira").value;
+  const saldo=localStorage.getItem("eki_saldo")||"0";
+  if(!id.includes("EKI_")){alert("Cria carteira primeiro");return;}
+  alert("Carteira: "+id+"\n\nSALDO PRA VENDER: "+saldo+" EKI\nPIX: 32468719816\nValor R$ "+(parseInt(saldo)*0.01).toFixed(2));
+}
+function venderEKI(){
+  let saldo=parseInt(localStorage.getItem("eki_saldo")||"0");
+  let qtd=parseInt(document.getElementById("qtd").value||"500");
+  if(saldo<qtd){alert("Saldo insuficiente: "+saldo);return;}
+  saldo-=qtd;
+  localStorage.setItem("eki_saldo",saldo);
+  alert("VENDEU "+qtd+" EKI\nRecebe R$ "+(qtd*0.01).toFixed(2)+" no PIX 32468719816\nRestante: "+saldo);
+}
+</script>
+</body></html>
