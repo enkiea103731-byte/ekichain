@@ -1,33 +1,35 @@
-<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EKI CHAIN</title></head><body style="background:#000;color:#0f0;font-family:monospace;padding:20px">
-<h2>EKI CHAIN - PIX 32468719816</h2>
-<input id="carteira" placeholder="EKI_..." style="width:100%;padding:10px"><br><br>
-<button onclick="criarCarteira()" style="width:100%;padding:15px;background:green;color:black;font-weight:bold">Criar Carteira</button><br><br>
-<button onclick="verSaldo()" style="width:100%;padding:15px;background:gray">Ver Saldo</button><br><br>
-<input id="qtd" value="500" style="width:45%;padding:10px">
-<button onclick="venderEKI()" style="width:50%;padding:10px;background:red;color:white">VENDER</button>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EKI CHAIN</title></head>
+<body style="background:#000;color:#0f0;font-family:monospace;padding:15px;text-align:center">
+<h2>EKI CHAIN PIX 32468719816</h2>
+<input id="carteira" placeholder="Clique Criar Carteira" style="width:90%;padding:10px"><br><br>
+<button onclick="criar()" style="width:90%;padding:15px;background:#0f0;font-weight:bold">Criar Carteira</button><br><br>
+<button onclick="saldo()" style="width:90%;padding:12px;background:#333;color:#0f0">Ver Saldo: <span id="s">10000</span> EKI</button><br><br>
+<input id="qtd" type="number" value="1000" style="width:30%;padding:10px"> EKI = R$ <span id="valor">10.00</span><br><br>
+<button onclick="vender()" style="width:90%;padding:15px;background:red;color:white;font-weight:bold">GERAR PIX PRA VENDER</button>
+<div id="pixBox" style="display:none;margin-top:20px;background:#111;padding:15px;border:1px solid #0f0">
+<p id="info"></p>
+<img id="qr" style="width:280px;height:280px;background:white"><br><br>
+<textarea id="copia" style="width:90%;height:80px"></textarea><br>
+<button onclick="navigator.clipboard.writeText(document.getElementById('copia').value);alert('Copiado!')">Copiar Copia e Cola</button>
+</div>
 <script>
-function criarCarteira(){
-  const id="EKI_"+Date.now()+"_"+Math.random().toString(36).substr(2,5).toUpperCase();
-  localStorage.setItem("eki_id",id);
-  if(!localStorage.getItem("eki_saldo")) localStorage.setItem("eki_saldo","10000");
-  document.getElementById("carteira").value=id;
-  alert("Criada: "+id+"\nSaldo: 10000 EKI liberado");
+let saldoAtual=10000;
+if(localStorage.getItem("eki_saldo")) saldoAtual=parseInt(localStorage.getItem("eki_saldo"));
+document.getElementById("s").innerText=saldoAtual;
+function criar(){const id="EKI_"+Date.now();localStorage.setItem("eki_id",id);document.getElementById("carteira").value=id;localStorage.setItem("eki_saldo","10000");saldoAtual=10000;document.getElementById("s").innerText=10000;alert("Criada: "+id)}
+function saldo(){alert("SALDO PRA VENDER: "+saldoAtual+" EKI = R$ "+(saldoAtual*0.01).toFixed(2))}
+document.getElementById("qtd").addEventListener("input",e=>{document.getElementById("valor").innerText=(e.target.value*0.01).toFixed(2)});
+async function vender(){
+let qtd=parseInt(document.getElementById("qtd").value);
+if(saldoAtual<qtd){alert("Sem saldo");return}
+let valor=(qtd*0.01).toFixed(2);
+let r=await fetch(`/api/pix?qtd=${qtd}&valor=${valor}`).then(x=>x.json()).catch(()=>null);
+let payload=r?.payload||`00020126330014BR.GOV.BCB.PIX011132468719816520400005303986540${valor}5802BR5925EKI CHAIN6009SAO PAULO62070503***6304`;
+let qrUrl=`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(payload)}`;
+document.getElementById("pixBox").style.display="block";
+document.getElementById("info").innerText=`VENDA ${qtd} EKI = R$ ${valor} | PIX 32468719816`;
+document.getElementById("qr").src=qrUrl;
+document.getElementById("copia").value=payload;
+saldoAtual-=qtd;localStorage.setItem("eki_saldo",saldoAtual);document.getElementById("s").innerText=saldoAtual;
 }
-function verSaldo(){
-  const id=localStorage.getItem("eki_id")||document.getElementById("carteira").value;
-  const saldo=localStorage.getItem("eki_saldo")||"0";
-  if(!id.includes("EKI_")){alert("Cria carteira primeiro");return;}
-  alert("Carteira: "+id+"\n\nSALDO PRA VENDER: "+saldo+" EKI\nPIX: 32468719816\nValor R$ "+(parseInt(saldo)*0.01).toFixed(2));
-}
-function venderEKI(){
-  let saldo=parseInt(localStorage.getItem("eki_saldo")||"0");
-  let qtd=parseInt(document.getElementById("qtd").value||"500");
-  if(saldo<qtd){alert("Saldo insuficiente: "+saldo);return;}
-  saldo-=qtd;
-  localStorage.setItem("eki_saldo",saldo);
-  alert("VENDEU "+qtd+" EKI\nRecebe R$ "+(qtd*0.01).toFixed(2)+" no PIX 32468719816\nRestante: "+saldo);
-}
-</script>
-</body></html>
+</script></body></html>
