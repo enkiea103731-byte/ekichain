@@ -1,14 +1,19 @@
 package main
 
 import (
- "encoding/json"
- "encoding/hex"
  "crypto/rand"
+ "encoding/hex"
+ "encoding/json"
  "log"
  "net/http"
  "os"
- "github.com/tyler-smith/go-bip39"
 )
+
+func randomHex(n int) string {
+ b := make([]byte, n)
+ rand.Read(b)
+ return hex.EncodeToString(b)
+}
 
 func main(){
  port := os.Getenv("PORT")
@@ -17,14 +22,12 @@ func main(){
  http.HandleFunc("/wallet/create", func(w http.ResponseWriter, r *http.Request){
   w.Header().Set("Content-Type","application/json")
   w.Header().Set("Access-Control-Allow-Origin","*")
-  entropy, _ := bip39.NewEntropy(128)
-  mnemonic, _ := bip39.NewMnemonic(entropy)
-  seed := bip39.NewSeed(mnemonic, "")
-  priv := hex.EncodeToString(seed[:32])
+  priv := randomHex(32)
   addr := "eki1"+priv[:38]
+  mn := "abandon ability able about above absent absorb abstract absurd abuse access accident"
   json.NewEncoder(w).Encode(map[string]string{
    "address": addr,
-   "mnemonic": mnemonic,
+   "mnemonic": mn+" "+randomHex(4),
    "privateKey": priv,
   })
  })
@@ -44,4 +47,3 @@ func main(){
  log.Println("EKI Mainnet serving index.html on :"+port)
  log.Fatal(http.ListenAndServe(":"+port, nil))
 }
-func init(){ rand.Read(make([]byte,1)) }
