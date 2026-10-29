@@ -1,7 +1,19 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.go" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "builds": [
+    { "src": "api/index.go", "use": "@vercel/go" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.md", "use": "@vercel/static" },
+    { "src": "*.txt", "use": "@vercel/static" },
+    { "src": "*.pdf", "use": "@vercel/static" },
+    { "src": "*.png", "use": "@vercel/static" },
+    { "src": "*.json", "use": "@vercel/static" },
+    { "src": "main.go", "use": "@vercel/static" },
+    { "src": "p2p.go", "use": "@vercel/static" },
+    { "src": "wallet.go", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.go" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
