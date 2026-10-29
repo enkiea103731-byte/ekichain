@@ -1,16 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "main.go", "use": "@vercel/go" },
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "explorer.html", "use": "@vercel/static" },
-    { "src": "EKI_Whitepaper_v1.html", "use": "@vercel/static" },
-    { "src": "logo.png", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "main.go" },
-    { "src": "/(.*).html", "dest": "/$1.html" },
-    { "src": "/(.*).png", "dest": "/$1.png" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.go" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
