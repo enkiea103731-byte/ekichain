@@ -1,0 +1,54 @@
+==== EKI CHAIN - BINANCE LISTING APPLICATION ====
+Project Name: EKI Chain
+Ticker: $EKI / EKI
+Chain Type: L1 Native Blockchain (NOT ERC20/BEP20) - Base EKI
+Consensus: Genesis + P2P TCP :6001
+Cryptography: ECDSA P-256 + SHA256
+
+Genesis Info:
+Address: EKI_3774968e0ae21a32
+Balance: 21.000.000 EKI
+Hash: 70cd416462f3aef6acfd9e47d9317cc6
+Signature Validated: true
+Location: Ibira, SP - Brazil
+Created: 100% Android via Termux - First blockchain native Android
+
+Tokenomics:
+Total Supply: 21.000.000 EKI FIXED
+Price Genesis: 1 EKI = R$0,01
+Market Cap: R$210.000
+80% Liquidity 16.8M
+10% Dev 2.1M
+5% Marketing 1.05M
+5% Reserve 1.05M
+
+Official Links:
+Website: https://ekichain.onrender.com
+Explorer: https://ekichain.onrender.com/explorer.html
+API Live: https://ekichain.onrender.com/api/balance
+API Blocks: https://ekichain.onrender.com/api/blocks
+GitHub: https://github.com/enkiea103731-byte/ekichain
+Whitepaper: https://ekichain.onrender.com/EKI_Whitepaper_v1.pdf
+Logo: https://ekichain.onrender.com/logo.png (enki71 - Deus Sumério)
+
+Technology:
+Language: Go 1.21
+Files: main.go, p2p.go, wallet.go, token.go, buy.go
+Ports: API :8080 | P2P :6001
+Wallet Format: EKI_ + 16 hex
+
+Roadmap:
+DONE - Chain, Wallet, P2P, Site, Explorer, Whitepaper
+NEXT - DEX Listing, CEX BR, Binance
+
+Contact:
+Founder: Ibira, SP - Brazil
+Team: Android Development - 100% Brazilian
+
+Why Binance?
+- First L1 created on Android in the world
+- Real cryptography, not clone
+- 100% Brazilian project
+- Native token, fixed supply
+- Ready for BRL pair
+

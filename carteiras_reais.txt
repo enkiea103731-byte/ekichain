@@ -1,0 +1,8 @@
+CARTEIRA 1:
+Endereço: EKI_2b0e4014afbdb029
+Priv: 5e3a71d3fdfc50054f174257159d3fdd35c82740eea1565ff788e101dca1802f
+
+CARTEIRA 2:
+Endereço: EKI_f932b60b5dacbf4e
+Priv: 3af1cca16d31b8bc47fb77f316947bb3a456ae63f8ee7efbff98d27a27bcb194
+
