@@ -1,1 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EKI Explorer</title><style>body{background:#000;color:#fff;font-family:monospace;padding:10px}.card{background:#111;border:1px solid #333;border-radius:8px;padding:12px;margin:10px auto;max-width:800px}b{color:gold}.live{color:#00ff88}a{color:#00ff88}</style></head><body><h2 style="color:gold">🔍 EKI EXPLORER</h2><div class="card"><div class="live">● LIVE - EKI Chain - API :8080 | P2P :6001</div><br>ENDEREÇO: <b id="a">EKI_3774968e0ae21a32</b><br>SALDO: <b>21.000.000 EKI</b><br>HASH: <b>70cd416462f3aef6...</b><br>ECDSA: <b>true</b></div><div class="card"><a href="/">← Voltar</a> | <a href="/EKI_Whitepaper_v1.pdf">Whitepaper</a></div><script>fetch('./wallet.json').then(r=>r.json()).then(j=>{document.getElementById('a').innerText=j.public_address||j.address}).catch(()=>{})</script></body></html>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EKIChain Explorer</title></head>
+<body style="background:#000;color:#0f0;font-family:monospace;padding:15px">
+<h2>EKIChain Explorer - Mainnet 701</h2>
+<div>ChainID: 701 (0x2BD)</div>
+<div>RPC: https://eki-chain.vercel.app/api/rpc</div>
+<div>PIX Oficial: 32468719816</div>
+<div>Status: <span style="color:#0f0">● AO VIVO</span></div>
+<hr>
+<div id="info">Carregando blocos...</div>
+<script>
+async function load(){
+ let r=await fetch('/api/explorer').then(x=>x.json()).catch(()=>({}));
+ document.getElementById('info').innerHTML=`<pre>${JSON.stringify(r,null,2)}</pre><br><div>Último bloco: ${new Date().toLocaleString('pt-BR')}<br>Telegram: <a href="https://t.me/+_RKJG6QGhqUzZTBh" style="color:#ffcc00">https://t.me/+_RKJG6QGhqUzZTBh</a></div>`;
+}
+load();
+setInterval(load,5000);
+</script>
+</body></html>
