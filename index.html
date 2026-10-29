@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EKI Chain - Mainnet</title>
+<style>
+body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:40px;margin:0}
+.logo{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#FF8C00);margin:20px auto;display:flex;align-items:center;justify-content:center;font-size:80px;box-shadow:0 0 60px rgba(255,215,0,0.6)}
+h1{font-size:48px;color:#FFD700;text-shadow:0 0 20px #FFD700}
+.btn{background:#FFD700;color:#000;padding:20px 40px;border:none;border-radius:30px;font-size:20px;font-weight:bold;cursor:pointer;box-shadow:0 0 30px #FFD700;margin:20px}
+.btn:hover{transform:scale(1.05)}
+.card{background:#111;border:1px solid #333;border-radius:15px;padding:20px;margin:20px auto;max-width:600px;word-break:break-all}
+</style>
+</head>
+<body>
+<div class="logo">E</div>
+<h1>EKI CHAIN</h1>
+<p>Mainnet Live - Commit 5bfc022 - Real $EKI</p>
+<button class="btn" onclick="create()">CRIAR CARTEIRA MAINNET $EKI</button>
+<div id="wallet" class="card" style="display:none"></div>
+<script>
+async function create(){
+ const b=document.getElementById('wallet');
+ b.style.display='block';
+ b.innerHTML='Criando...';
+ try{
+  const r=await fetch('/wallet/create');
+  const j=await r.json();
+  b.innerHTML='<b>ENDEREÇO:</b><br>'+j.address+'<br><br><b>CHAVE:</b><br>'+j.privateKey+'<br><br><b>SEMENTE:</b><br>'+j.mnemonic+'<br><br><span style=color:red>GUARDE EM LOCAL SEGURO!</span>';
+ }catch(e){b.innerHTML='Erro: '+e}
+}
+</script>
+</body>
+</html>
