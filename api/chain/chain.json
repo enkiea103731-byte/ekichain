@@ -1,0 +1,14 @@
+{
+  "name": "EKIChain Mainnet",
+  "chainId": 701,
+  "network": "ekichain",
+  "rpc": ["https://eki-chain.vercel.app/api/rpc"],
+  "explorer": "https://eki-chain.vercel.app/explorer.html",
+  "symbol": "EKI",
+  "decimals": 2,
+  "officialPix": "32468719816",
+  "telegram": "https://t.me/+_RKJG6QGhqUzZTBh",
+  "isAndroidNative": true,
+  "country": "Brasil - Ibirá SP",
+  "launch": "22/10/2025"
+}

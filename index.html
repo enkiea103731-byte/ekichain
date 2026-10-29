@@ -1,104 +1,11 @@
 <!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>$EKI - EKICHAIN Corretora Oficial</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-:root{--gold:#ffcc00;--bg:#080808;--card:#121212}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui}
-.header{position:sticky;top:0;background:rgba(10,10,10,0.9);backdrop-filter:blur(10px);padding:12px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;z-index:10}
-.logo-box{display:flex;align-items:center;gap:10px}
-.logo-img{width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 20px var(--gold);object-fit:cover}
-.hero{text-align:center;padding:25px 15px 10px}
-.hero-coin{width:160px;height:160px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 50px #ff9900,0 0 90px #ffcc0033;object-fit:cover}
-.gold{color:var(--gold)} .live{color:#00ff66;font-size:11px;margin-top:10px}
-.card{background:var(--card);border:1px solid #222;border-radius:14px;margin:12px;padding:14px}
-.btn-gold{width:100%;background:var(--gold);color:#000;font-weight:900;padding:16px;border:0;border-radius:12px;font-size:16px;cursor:pointer}
-.btn-outline{background:#000;color:var(--gold);border:1px solid var(--gold);padding:8px 14px;border-radius:20px;font-size:12px}
-.small{font-size:11px;color:#888}
-.qr{width:280px;height:280px;background:#fff;padding:10px;border-radius:12px}
-input{background:#000;color:#fff;border:1px solid #333;padding:12px;border-radius:8px}
-</style>
+<title>$EKI - EKICHAIN Mainnet - Primeira Blockchain Android do Mundo</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>body{margin:0;background:#050505;color:#fff;font-family:Inter} .hdr{padding:12px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;background:#080808;z-index:9} .logo{width:42px;height:42px;border-radius:50%;border:2px solid #ffcc00;box-shadow:0 0 20px #ffcc00} .hero{text-align:center;padding:20px 15px} .coin{width:150px;height:150px;border-radius:50%;border:3px solid #ffcc00;box-shadow:0 0 40px #ff9900} .gold{color:#ffcc00} .card{background:#111;border:1px solid #222;border-radius:14px;margin:10px;padding:14px} .btn{width:100%;background:#ffcc00;color:#000;font-weight:900;padding:14px;border:0;border-radius:10px} .small{font-size:11px;color:#888} .qr{width:280px;height:280px;background:#fff;padding:8px;border-radius:10px} input{background:#000;color:#fff;border:1px solid #333;padding:10px;border-radius:8px}</style>
 </head><body>
-<div class="header">
-<div class="logo-box"><img src="logo.png" class="logo-img"><b>$EKI</b><span class="small">/ EKICHAIN BASE</span></div>
-<button class="btn-outline" id="cBtn" onclick="conectar()">Conectar Carteira</button>
-</div>
-
-<div class="hero">
-<img src="logo.png" class="hero-coin" id="heroCoin">
-<h1 class="gold" style="margin:12px 0 5px">$EKI</h1>
-<div class="small">1º blockchain do mundo<br>criada a partir do S.O Android<br>100% Brasileira 🇧🇷</div>
-<div class="live">• AO VIVO - SINCRONIZADO COM DEX EKICHAIN: <span id="time"></span> • $EKI / USD</div>
-</div>
-
-<div class="card">
-<div style="display:flex;justify-content:space-between"><b class="gold">DEX AO VIVO</b><span class="small">EKICHAIN DEX</span></div>
-<div style="margin-top:10px"><canvas id="chart" height="200"></canvas></div>
-<div style="display:flex;justify-content:space-between;margin-top:10px;font-size:12px">
-<span>Price: <b id="price" class="gold">$0.2909</b> <span style="color:#0f0">+4.2%</span></span><span>MCAP: $2,908.79</span>
-</div>
-<button class="btn-gold" onclick="abrirVenda()">COMPRAR / VENDER $EKI</button>
-<div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-<input id="qtd" type="number" value="1000" style="width:110px"><span>= R$ <span id="v">10.00</span></span>
-<span style="margin-left:auto;font-size:12px">Saldo: <b id="saldo">9000</b> $EKI</span>
-</div>
-
-<div id="pixBox" style="display:none;text-align:center;margin-top:15px;border:1px solid var(--gold);border-radius:12px;padding:15px;background:#0f0f0f">
-<div id="info" style="color:var(--gold);font-weight:bold;margin-bottom:10px"></div>
-<img id="qr" class="qr"><br><br>
-<textarea id="copia" style="width:98%;height:75px;background:#000;color:#aaa;font-size:10px"></textarea><br>
-<button onclick="navigator.clipboard.writeText(document.getElementById('copia').value);alert('PIX Copiado!')" style="margin-top:8px;padding:10px 20px;background:var(--gold);border:0;border-radius:8px;font-weight:bold">Copiar Pix Copia e Cola</button>
-<div class="small" style="margin-top:8px">PIX OFICIAL EKI CHAIN: 32468719816 - Chave CPF</div>
-</div>
-</div>
-
-<div class="card">
-<b>Carteira & Histórico</b>
-<div class="small" style="margin:8px 0">Endereço: <span id="addr" style="color:#fff">EKI_1793296930211</span> <button onclick="copyAddr()" style="background:none;border:0;color:var(--gold)">[copiar]</button></div>
-<div id="hist" style="background:#000;padding:10px;border-radius:8px;max-height:150px;overflow:auto;font-size:11px;white-space:pre-wrap"></div>
-</div>
-
-<div class="card" style="text-align:center">
-<div class="small">TOKEN OFICIAL EKIChain<br>Supply 2.100.000 $EKI<br>Base: EKICHAIN • Valor: R$ 0,01 por token<br>PIX: 32468719816</div>
-<div class="small" style="margin-top:12px">© 2026 $EKI71 - Todos os Direitos Reservados<br>Criado no Brasil - Ibirá - SP - 22/10/2025</div>
-</div>
-
+<div class="hdr"><div style="display:flex;gap:8px;align-items:center"><img src="logo.png" class="logo"><b>$EKI</b><span class="small">EKICHAIN MAINNET 701</span></div><div style="display:flex;gap:6px"><a href="https://t.me/+_RKJG6QGhqUzZTBh" target="_blank" style="background:#229ED9;color:#fff;padding:6px 10px;border-radius:20px;font-size:12px;text-decoration:none">Telegram</a><button onclick="addChain()" style="background:#000;color:#ffcc00;border:1px solid #ffcc00;padding:6px 10px;border-radius:20px;font-size:11px">Add EKIChain na MetaMask</button></div></div>
+<div class="hero"><img src="logo.png" class="coin"><h1 class="gold">$EKI</h1><div class="small">1ª BLOCKCHAIN DO MUNDO CRIADA NO ANDROID • 100% BRASILEIRA<br>ChainID 701 • RPC: eki-chain.vercel.app/api/rpc • PIX OFICIAL: 32468719816</div><div style="color:#0f0;font-size:11px;margin-top:6px">● MAINNET AO VIVO - IBIRÁ SP - SINCRONIZADA</div></div>
+<div class="card"><div style="display:flex;justify-content:space-between"><b class="gold">EKIChain DEX AO VIVO</b><a href="explorer.html" style="color:#ffcc00;font-size:11px">Explorer →</a></div><canvas id="chart" height="190"></canvas><div style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px"><span>Preço: <b id="price" class="gold">R$ 0,01</b></span><span id="time"></span></div><button class="btn" onclick="abrirVenda()">COMPRAR / VENDER $EKI NA EKICHAIN</button><div style="display:flex;gap:8px;margin-top:10px"><input id="qtd" type="number" value="1000" style="width:100px"><span class="small">Saldo: <b id="saldo">--</b> $EKI</span></div><div id="pixBox" style="display:none;text-align:center;margin-top:12px;border:1px solid #ffcc00;border-radius:10px;padding:12px"><div id="info" class="gold"></div><img id="qr" class="qr"><br><textarea id="copia" style="width:98%;height:65px;background:#000;color:#aaa;font-size:10px;margin-top:8px"></textarea><br><button onclick="navigator.clipboard.writeText(document.getElementById('copia').value);alert('PIX Copiado!')" style="margin-top:8px;background:#ffcc00;border:0;padding:8px 16px;border-radius:6px;font-weight:bold">Copiar PIX 32468719816</button></div></div>
+<div class="card"><b>Credibilidade EKIChain</b><div class="small" style="margin-top:8px;line-height:1.6">✓ Código Go aberto no GitHub: enk.../ekichain ✓ Mainnet Proof em MAINNET_PROOF.md ✓ Balances em balances.json ✓ Explorer público /api/explorer ✓ Whitepaper EKI_Whitepaper_v1.pdf ✓ Sem dependência de Solana/BSC - 100% nativa ✓ Telegram oficial verificado</div><div style="margin-top:10px"><a href="EKI_Whitepaper_v1.pdf" target="_blank" style="color:#ffcc00">Whitepaper</a> • <a href="MAINNET_PROOF.md" target="_blank" style="color:#ffcc00">Mainnet Proof</a> • <a href="https://t.me/+_RKJG6QGhqUzZTBh" target="_blank" style="color:#229ED9">Telegram Oficial</a></div></div>
 <script>
-let saldo=parseInt(localStorage.getItem("eki_saldo")||"9000");
-let addr=localStorage.getItem("eki_id")||"EKI_1793296930211";
-let hist=JSON.parse(localStorage.getItem("eki_hist")||"[]");
-function render(){
- document.getElementById("saldo").innerText=saldo;
- document.getElementById("addr").innerText=addr;
- let h=""; hist.slice(-10).reverse().forEach(x=>h+=`${x.data} ${x.tipo} ${x.qtd} $EKI = R$${x.valor}\n`);
- document.getElementById("hist").innerText=h||"Nenhuma transação ainda. Crie carteira e venda.";
-}
-render();
-document.getElementById("qtd").addEventListener("input",e=>document.getElementById("v").innerText=(e.target.value*0.01).toFixed(2));
-function conectar(){
- if(!localStorage.getItem("eki_id")){addr="EKI_"+Date.now();localStorage.setItem("eki_id",addr);localStorage.setItem("eki_saldo","10000");saldo=10000;}
- document.getElementById("cBtn").innerText="Conectado ✓ "+addr.slice(0,14);
- document.getElementById("cBtn").style.background="#ffcc00";document.getElementById("cBtn").style.color="#000";
- render();
-}
-function copyAddr(){navigator.clipboard.writeText(addr);alert("Carteira copiada: "+addr)}
-function atualizarHora(){document.getElementById("time").innerText=new Date().toLocaleTimeString('pt-BR');}
-setInterval(atualizarHora,1000);atualizarHora();
-const ctx=document.getElementById('chart').getContext('2d');
-new Chart(ctx,{type:'line',data:{labels:['00h','04h','08h','12h','14h','Agora'],datasets:[{label:'$EKI / USD',data:[0.00002909,0.00002917,0.00002909,0.00002909,0.00002909,0.00002909],borderColor:'#ffcc00',backgroundColor:'rgba(255,204,0,0.15)',tension:0.4,fill:true}]},options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#666',font:{size:10}}},y:{grid:{color:'#1a1a1a'},ticks:{color:'#666',font:{size:10}}}}}});
-async function abrirVenda(){
- let qtd=parseInt(document.getElementById("qtd").value||"1000");
- if(saldo<qtd){alert("Saldo insuficiente: "+saldo);return;}
- let valor=(qtd*0.01).toFixed(2);
- let r=await fetch(`/api/pix?qtd=${qtd}&valor=${valor}&txid=EKI${Date.now()}`).then(x=>x.json()).catch(()=>null);
- let payload=r?.payload||`00020126330014BR.GOV.BCB.PIX011132468719816520400005303986540${valor}5802BR5925EKI CHAIN6009SAO PAULO62070503***6304`;
- let qrUrl=`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(payload)}`;
- document.getElementById("pixBox").style.display="block";
- document.getElementById("info").innerText=`VENDA ${qtd} $EKI = R$ ${valor} | PIX 32468719816`;
- document.getElementById("qr").src=qrUrl;
- document.getElementById("copia").value=payload;
- hist.push({data:new Date().toLocaleString('pt-BR'),tipo:"VENDA",qtd,valor}); localStorage.setItem("eki_hist",JSON.stringify(hist));
- saldo-=qtd; localStorage.setItem("eki_saldo",saldo); render();
- window.scrollTo(0,document.body.scrollHeight);
-}
-conectar();
-</script>
-</body></html>
+let saldo=parseInt(localStorage.getItem("eki_saldo")||"9000");let addr=localStorage.getItem("eki_id")||"EKI_"+Date.now();document.getElementById("saldo").innerText=saldo;async function addChain(){try{await window.ethereum.request({method:'wallet_addEthereumChain',params:[{chainId:'0x2BD',chainName:'EKIChain Mainnet',nativeCurrency:{name:'EKI',symbol:'EKI',decimals:2},rpcUrls:['https://eki-chain.vercel.app/api/rpc'],blockExplorerUrls:['https://eki-chain.vercel.app/explorer.html']}]});alert('EKIChain adicionada na MetaMask!')}catch(e){alert('Instale MetaMask e tente. ChainID 701')}}function atualizar(){document.getElementById("time").innerText=new Date().toLocaleTimeString('pt-BR')}setInterval(atualizar,1000);atualizar();const ctx=document.getElementById('chart').getContext('2d');new Chart(ctx,{type:'line',data:{labels:['00h','06h','12h','18h','Agora'],datasets:[{label:'$EKI EKICHAIN',data:[0.008,0.009,0.01,0.012,0.01],borderColor:'#ffcc00',backgroundColor:'rgba(255,204,0,0.2)',fill:true,tension:0.4}]},options:{plugins:{legend:{display:false}},scales:{y:{display:false},x:{display:false}}}});async function abrirVenda(){let qtd=parseInt(document.getElementById("qtd").value||"1000");if(saldo<qtd){alert("Saldo insuficiente");return}let valor=(qtd*0.01).toFixed(2);let r=await fetch(`/api/pix?qtd=${qtd}&valor=${valor}`).then(x=>x.json()).catch(()=>null);let payload=r?.payload||`00020126330014BR.GOV.BCB.PIX011132468719816520400005303986540${valor}5802BR5925EKI CHAIN6005IBIRA62070503***6304`;let qrUrl=`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(payload)}`;document.getElementById("pixBox").style.display="block";document.getElementById("info").innerText=`VENDA ${qtd} $EKI = R$ ${valor} | PIX 32468719816`;document.getElementById("qr").src=qrUrl;document.getElementById("copia").value=payload;saldo-=qtd;localStorage.setItem("eki_saldo",saldo);document.getElementById("saldo").innerText=saldo}
+</script></body></html>
