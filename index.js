@@ -14,4 +14,4 @@ app.post('/rpc',(req,res)=>{
  res.json({jsonrpc:"2.0",id,result});
 });
 app.get('/',(req,res)=>res.send(`EKI MAINNET 70101 - Bloco ${block} ONLINE`));
-app.listen(process.env.PORT||3000,()=>console.log('EKI online'));
+app.listen(process.env.PORT||8080,"0.0.0.0",()=>console.log("EKI online"));
